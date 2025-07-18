@@ -1,91 +1,188 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# NC Deployment - Backend Server
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## 📋 Descripción
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API REST desarrollada con NestJS y TypeScript que sirve como backend para la aplicación NC Deployment. Esta API proporciona endpoints para gestionar información y servicios de la aplicación.
 
-## Description
+## 🛠️ Tecnologías
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **Framework**: NestJS 11.x
+- **Lenguaje**: TypeScript
+- **Runtime**: Node.js
+- **Herramientas de desarrollo**:
+  - Nodemon para hot-reload en desarrollo
+  - ESLint y Prettier para calidad de código
+  - Jest para testing unitario y e2e
+  - SWC para compilación rápida
 
-## Project setup
+## 📁 Estructura del Proyecto
 
-```bash
-$ npm install
+```
+src/
+├── app.module.ts           # Módulo principal de la aplicación
+├── main.ts                 # Punto de entrada de la aplicación
+├── common/                 # Utilidades comunes
+│   └── constants.ts
+├── config/                 # Configuración de la aplicación
+│   └── configuration.ts
+├── interfaces/             # Definiciones de tipos e interfaces
+└── modules/                # Módulos de funcionalidad
+    └── info/               # Módulo de información
+        ├── info.controller.ts
+        ├── info.module.ts
+        └── info.services.ts
 ```
 
-## Compile and run the project
+## 🚀 Configuración
+
+### Prerequisitos
+
+- Node.js (v18 o superior)
+- npm o yarn
+
+### Instalación
+
+1. **Instalar dependencias**
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+2. **Configurar variables de entorno**
+   Crear un archivo `.env` basado en `.env.example` (si existe) o configurar las variables necesarias.
+
+### Ejecución
 
 ```bash
-# unit tests
-$ npm run test
+# Desarrollo con hot-reload
+npm run start:dev
 
-# e2e tests
-$ npm run test:e2e
+# Producción
+npm run start:prod
 
-# test coverage
-$ npm run test:cov
+# Modo debug
+npm run start:debug
 ```
 
-## Deployment
+El servidor se ejecutará en `http://localhost:3000` por defecto.
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## 🐳 Docker
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Para ejecutar con Docker:
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Construir y ejecutar
+docker-compose up --build
+
+# Solo ejecutar (si ya está construido)
+docker-compose up
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## 🔧 Scripts Disponibles
 
-## Resources
+```bash
+npm run build          # Compilar el proyecto
+npm run format         # Formatear código con Prettier
+npm run start          # Iniciar aplicación
+npm run start:dev      # Desarrollo con hot-reload
+npm run start:debug    # Modo debug
+npm run start:prod     # Producción
+npm run lint           # Linter con ESLint
+npm run test           # Tests unitarios
+npm run test:watch     # Tests en modo watch
+npm run test:cov       # Coverage de tests
+npm run test:debug     # Tests en modo debug
+npm run test:e2e       # Tests end-to-end
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+## 📡 API Endpoints
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### Info Module
 
-## Support
+- **GET** `/info` - Obtener información del sistema
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+curl http://localhost:3000/info
+```
+
+## 🧪 Testing
+
+### Tests Unitarios
+
+```bash
+npm run test
+```
+
+### Tests E2E
+
+```bash
+npm run test:e2e
+```
+
+### Coverage
+
+```bash
+npm run test:cov
+```
+
+## 📝 Configuración
+
+El servidor utiliza `@nestjs/config` para la gestión de configuración. Las variables de entorno se pueden configurar en:
+
+- Archivo `.env`
+- Variables de sistema
+- Configuración por defecto en `src/config/configuration.ts`
+
+### Variables de Entorno Principales
+
+- `PORT` - Puerto del servidor (default: 3000)
+- `NODE_ENV` - Entorno de ejecución (development/production)
+
+## 🏗️ Arquitectura
+
+La aplicación sigue la arquitectura modular de NestJS:
+
+- **Controllers**: Manejan las peticiones HTTP
+- **Services**: Contienen la lógica de negocio
+- **Modules**: Organizan y encapsulan funcionalidades
+- **Config**: Configuración centralizada de la aplicación
+
+## 🔒 CORS
+
+El servidor tiene CORS habilitado para permitir peticiones desde el frontend. La configuración se encuentra en `main.ts`.
+
+## 📋 Desarrollo
+
+### Estructura de Archivos
+
+- Cada módulo debe tener su controller, service y module
+- Los interfaces y tipos van en la carpeta `interfaces/`
+- Las constantes comunes en `common/constants.ts`
+- La configuración en `config/configuration.ts`
+
+### Estándares de Código
+
+- ESLint para linting
+- Prettier para formateo
+- TypeScript estricto
+- Tests requeridos para nuevas funcionalidades
+
+## 🚀 Despliegue
+
+Para producción:
+
+1. Compilar el proyecto: `npm run build`
+2. Configurar variables de entorno de producción
+3. Ejecutar: `npm run start:prod`
+
+## 📚 Recursos
+
+- [Documentación de NestJS](https://docs.nestjs.com)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+
+---
+
+Para información del proyecto completo, consulta el README principal en la raíz del repositorio.
 
 ## Stay in touch
 
