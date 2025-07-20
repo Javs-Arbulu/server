@@ -1,4 +1,18 @@
 FROM node:20-alpine
+
 WORKDIR /app
+
+# Instalar herramientas necesarias para desarrollo
+RUN npm install -g ts-node typescript tsconfig-paths nodemon
+
+# Copiar package.json e instalar dependencias
 COPY package*.json ./
-RUN npm install -g ts-node typescript nodemon tsconfig-paths && npm install
+RUN npm install
+
+# Copiar el resto del código
+COPY . .
+
+EXPOSE 3000
+
+# Inicia el servidor en modo desarrollo
+CMD ["npx", "nodemon", "src/main.ts"]
